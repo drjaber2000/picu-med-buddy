@@ -7,6 +7,7 @@ import { User, Weight, Ruler, Activity } from "lucide-react";
 
 export interface PatientData {
   name: string;
+  mrn: string;
   age: string;
   ageUnit: "months" | "years";
   weight: number;
