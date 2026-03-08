@@ -92,7 +92,7 @@ export const medications: Medication[] = [
     unit: "mcg/kg/hr",
     route: "IV infusion",
     frequency: "Continuous",
-    notes: "Monitor for bradycardia & hypotension",
+    notes: "Preparation: 4 mcg/kg in 50 mL NS. 1 mL/hr = 0.08 mcg/kg/hr. Monitor for bradycardia & hypotension.",
     calculate: (w) => `${(w * 0.2).toFixed(2)} – ${(w * 1).toFixed(2)} mcg/hr`,
   },
   {
