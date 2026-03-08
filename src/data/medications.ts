@@ -102,7 +102,7 @@ export const medications: Medication[] = [
     unit: "mg",
     route: "IV",
     frequency: "PRN",
-    notes: "Procedural sedation",
+    notes: "Procedural sedation. Infusion prep: 50 mg in 50 mL NS (1 mg/mL), run at 0.5–2 mg/kg/hr.",
     calculate: (w) => `${(w * 1).toFixed(1)} – ${(w * 2).toFixed(1)} mg IV`,
   },
   {
