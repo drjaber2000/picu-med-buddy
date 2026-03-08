@@ -62,6 +62,7 @@ export const medications: Medication[] = [
     unit: "mcg/kg/hr",
     route: "IV infusion",
     frequency: "Continuous",
+    notes: "Preparation: 1 mg/kg in 50 mL NS (concentration = weight-based). Monitor respiratory rate.",
     calculate: (w) => `${(w * 10 / 1000).toFixed(3)} – ${(w * 40 / 1000).toFixed(3)} mg/hr`,
   },
   {
