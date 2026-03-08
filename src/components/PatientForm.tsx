@@ -7,6 +7,7 @@ import { User, Weight, Ruler, Activity } from "lucide-react";
 
 export interface PatientData {
   name: string;
+  mrn: string;
   age: string;
   ageUnit: "months" | "years";
   weight: number;
@@ -20,6 +21,7 @@ interface PatientFormProps {
 
 const PatientForm = ({ onSubmit }: PatientFormProps) => {
   const [name, setName] = useState("");
+  const [mrn, setMrn] = useState("");
   const [age, setAge] = useState("");
   const [ageUnit, setAgeUnit] = useState<"months" | "years">("years");
   const [weight, setWeight] = useState("");
@@ -35,6 +37,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
     if (!name.trim() || !weight || weightNum <= 0) return;
     onSubmit({
       name: name.trim(),
+      mrn: mrn.trim(),
       age,
       ageUnit,
       weight: weightNum,
@@ -54,7 +57,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
       <CardContent className="pt-6">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="md:col-span-2">
+            <div>
               <Label htmlFor="name" className="text-sm font-semibold text-foreground">
                 Patient Name
               </Label>
@@ -65,6 +68,19 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
                 placeholder="Enter patient name"
                 className="mt-1"
                 required
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="mrn" className="text-sm font-semibold text-foreground">
+                MRN
+              </Label>
+              <Input
+                id="mrn"
+                value={mrn}
+                onChange={(e) => setMrn(e.target.value)}
+                placeholder="Medical Record Number"
+                className="mt-1"
               />
             </div>
 
