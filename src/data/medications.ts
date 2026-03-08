@@ -38,11 +38,12 @@ export const medications: Medication[] = [
   {
     name: "Midazolam (Infusion)",
     category: "Sedation & Analgesia",
-    dosePerKg: "0.5–2 mcg/kg/min",
+    dosePerKg: "1–6 mcg/kg/min",
     unit: "mcg/kg/min",
     route: "IV infusion",
     frequency: "Continuous",
-    calculate: (w) => `${(w * 0.5 * 60 / 1000).toFixed(2)} – ${(w * 2 * 60 / 1000).toFixed(2)} mg/hr`,
+    notes: "Preparation: 15 mg in 50 mL NS (0.3 mg/mL) or 50 mg in 50 mL NS (1 mg/mL). Titrate to COMFORT-B score.",
+    calculate: (w) => `${(w * 1 * 60 / 1000).toFixed(2)} – ${(w * 6 * 60 / 1000).toFixed(2)} mg/hr`,
   },
   {
     name: "Morphine (Bolus)",
