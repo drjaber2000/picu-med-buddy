@@ -21,6 +21,7 @@ interface PatientFormProps {
 
 const PatientForm = ({ onSubmit }: PatientFormProps) => {
   const [name, setName] = useState("");
+  const [mrn, setMrn] = useState("");
   const [age, setAge] = useState("");
   const [ageUnit, setAgeUnit] = useState<"months" | "years">("years");
   const [weight, setWeight] = useState("");
