@@ -172,7 +172,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
           </div>
 
           <Button type="submit" className="w-full" size="lg">
-            Calculate Medications
+            Go to Sedation
           </Button>
         </form>
       </CardContent>
