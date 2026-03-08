@@ -112,7 +112,7 @@ export const medications: Medication[] = [
     unit: "mg/kg/hr",
     route: "IV infusion",
     frequency: "Continuous",
-    notes: "Avoid prolonged use in children (propofol infusion syndrome)",
+    notes: "Preparation: Use undiluted (10 mg/mL). Avoid prolonged use in children (propofol infusion syndrome). Check triglycerides.",
     calculate: (w) => `${(w * 1).toFixed(1)} – ${(w * 4).toFixed(1)} mg/hr`,
   },
   {
