@@ -38,11 +38,12 @@ export const medications: Medication[] = [
   {
     name: "Midazolam (Infusion)",
     category: "Sedation & Analgesia",
-    dosePerKg: "0.5–2 mcg/kg/min",
+    dosePerKg: "1–6 mcg/kg/min",
     unit: "mcg/kg/min",
     route: "IV infusion",
     frequency: "Continuous",
-    calculate: (w) => `${(w * 0.5 * 60 / 1000).toFixed(2)} – ${(w * 2 * 60 / 1000).toFixed(2)} mg/hr`,
+    notes: "Preparation: 15 mg in 50 mL NS (0.3 mg/mL) or 50 mg in 50 mL NS (1 mg/mL). Titrate to COMFORT-B score.",
+    calculate: (w) => `${(w * 1 * 60 / 1000).toFixed(2)} – ${(w * 6 * 60 / 1000).toFixed(2)} mg/hr`,
   },
   {
     name: "Morphine (Bolus)",
@@ -61,6 +62,7 @@ export const medications: Medication[] = [
     unit: "mcg/kg/hr",
     route: "IV infusion",
     frequency: "Continuous",
+    notes: "Preparation: 1 mg/kg in 50 mL NS (concentration = weight-based). Monitor respiratory rate.",
     calculate: (w) => `${(w * 10 / 1000).toFixed(3)} – ${(w * 40 / 1000).toFixed(3)} mg/hr`,
   },
   {
@@ -80,6 +82,7 @@ export const medications: Medication[] = [
     unit: "mcg/kg/hr",
     route: "IV infusion",
     frequency: "Continuous",
+    notes: "Preparation: 10 mcg/kg in 50 mL NS. 1 mL/hr = 0.2 mcg/kg/hr. Chest wall rigidity risk with rapid bolus.",
     calculate: (w) => `${(w * 1).toFixed(1)} – ${(w * 3).toFixed(1)} mcg/hr`,
   },
   {
@@ -89,7 +92,7 @@ export const medications: Medication[] = [
     unit: "mcg/kg/hr",
     route: "IV infusion",
     frequency: "Continuous",
-    notes: "Monitor for bradycardia & hypotension",
+    notes: "Preparation: 4 mcg/kg in 50 mL NS. 1 mL/hr = 0.08 mcg/kg/hr. Monitor for bradycardia & hypotension.",
     calculate: (w) => `${(w * 0.2).toFixed(2)} – ${(w * 1).toFixed(2)} mcg/hr`,
   },
   {
@@ -99,7 +102,7 @@ export const medications: Medication[] = [
     unit: "mg",
     route: "IV",
     frequency: "PRN",
-    notes: "Procedural sedation",
+    notes: "Procedural sedation. Infusion prep: 50 mg in 50 mL NS (1 mg/mL), run at 0.5–2 mg/kg/hr.",
     calculate: (w) => `${(w * 1).toFixed(1)} – ${(w * 2).toFixed(1)} mg IV`,
   },
   {
@@ -109,7 +112,7 @@ export const medications: Medication[] = [
     unit: "mg/kg/hr",
     route: "IV infusion",
     frequency: "Continuous",
-    notes: "Avoid prolonged use in children (propofol infusion syndrome)",
+    notes: "Preparation: Use undiluted (10 mg/mL). Avoid prolonged use in children (propofol infusion syndrome). Check triglycerides.",
     calculate: (w) => `${(w * 1).toFixed(1)} – ${(w * 4).toFixed(1)} mg/hr`,
   },
   {
