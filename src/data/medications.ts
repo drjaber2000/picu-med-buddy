@@ -82,6 +82,7 @@ export const medications: Medication[] = [
     unit: "mcg/kg/hr",
     route: "IV infusion",
     frequency: "Continuous",
+    notes: "Preparation: 10 mcg/kg in 50 mL NS. 1 mL/hr = 0.2 mcg/kg/hr. Chest wall rigidity risk with rapid bolus.",
     calculate: (w) => `${(w * 1).toFixed(1)} – ${(w * 3).toFixed(1)} mcg/hr`,
   },
   {
