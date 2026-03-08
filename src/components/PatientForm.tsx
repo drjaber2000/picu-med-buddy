@@ -37,6 +37,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
     if (!name.trim() || !weight || weightNum <= 0) return;
     onSubmit({
       name: name.trim(),
+      mrn: mrn.trim(),
       age,
       ageUnit,
       weight: weightNum,
