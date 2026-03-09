@@ -106,6 +106,16 @@ export const medications: Medication[] = [
     calculate: (w) => `${(w * 1).toFixed(1)} – ${(w * 2).toFixed(1)} mg IV`,
   },
   {
+    name: "Ketamine (Infusion)",
+    category: "Sedation & Analgesia",
+    dosePerKg: "5–20 mcg/kg/min",
+    unit: "mcg/kg/min",
+    route: "IV infusion",
+    frequency: "Continuous",
+    notes: "Preparation: 50 mg in 50 mL NS (1 mg/mL). Titrate for analgosedation. Monitor for emergence reactions, excessive secretions.",
+    calculate: (w) => `${(w * 5 * 60 / 1000).toFixed(2)} – ${(w * 20 * 60 / 1000).toFixed(2)} mg/hr`,
+  },
+  {
     name: "Propofol (Infusion)",
     category: "Sedation & Analgesia",
     dosePerKg: "1–4 mg/kg/hr",
