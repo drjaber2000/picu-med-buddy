@@ -23,10 +23,10 @@ interface PatientFormProps {
 const PatientForm = ({ onSubmit }: PatientFormProps) => {
   const [name, setName] = useState("");
   const [mrn, setMrn] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(0);
   const [ageUnit, setAgeUnit] = useState<"months" | "years">("years");
   const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState("");
+  const [height, setHeight] = useState(0);
 
   const weightNum = parseFloat(weight) || 0;
   const heightNum = parseFloat(height) || 0;
