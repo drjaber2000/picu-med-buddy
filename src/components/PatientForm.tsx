@@ -144,19 +144,17 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
             </div>
 
             <div>
-              <Label htmlFor="height" className="text-sm font-semibold text-foreground flex items-center gap-1">
-                <Ruler className="h-3.5 w-3.5" /> Height (cm)
+              <Label className="text-sm font-semibold text-foreground flex items-center justify-between">
+                <span className="flex items-center gap-1"><Ruler className="h-3.5 w-3.5" /> Height (cm)</span>
+                <span className="font-mono text-primary">{height} cm</span>
               </Label>
-              <Input
-                id="height"
-                type="number"
-                min="1"
-                max="250"
-                step="0.1"
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
-                placeholder="cm"
-                className="mt-1"
+              <Slider
+                value={[height]}
+                onValueChange={(v) => setHeight(v[0])}
+                min={0}
+                max={200}
+                step={1}
+                className="mt-3"
               />
             </div>
 
