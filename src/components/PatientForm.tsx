@@ -29,7 +29,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
   const [height, setHeight] = useState(0);
 
   const weightNum = parseFloat(weight) || 0;
-  const heightNum = parseFloat(height) || 0;
+  const heightNum = height;
   const heightM = heightNum / 100;
   const bmi = weightNum > 0 && heightM > 0 ? weightNum / (heightM * heightM) : null;
 
