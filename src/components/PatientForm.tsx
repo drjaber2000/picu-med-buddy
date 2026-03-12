@@ -39,7 +39,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
     onSubmit({
       name: name.trim(),
       mrn: mrn.trim(),
-      age,
+      age: String(age),
       ageUnit,
       weight: weightNum,
       height: heightNum,
