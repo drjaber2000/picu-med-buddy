@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Slider } from "@/components/ui/slider";
 import { User, Weight, Ruler, Activity } from "lucide-react";
 
 export interface PatientData {
@@ -22,13 +23,13 @@ interface PatientFormProps {
 const PatientForm = ({ onSubmit }: PatientFormProps) => {
   const [name, setName] = useState("");
   const [mrn, setMrn] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(0);
   const [ageUnit, setAgeUnit] = useState<"months" | "years">("years");
   const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState("");
+  const [height, setHeight] = useState(0);
 
   const weightNum = parseFloat(weight) || 0;
-  const heightNum = parseFloat(height) || 0;
+  const heightNum = height;
   const heightM = heightNum / 100;
   const bmi = weightNum > 0 && heightM > 0 ? weightNum / (heightM * heightM) : null;
 
@@ -38,7 +39,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
     onSubmit({
       name: name.trim(),
       mrn: mrn.trim(),
-      age,
+      age: String(age),
       ageUnit,
       weight: weightNum,
       height: heightNum,
@@ -85,25 +86,23 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
             </div>
 
             <div>
-              <Label htmlFor="age" className="text-sm font-semibold text-foreground">
-                Age
+              <Label className="text-sm font-semibold text-foreground flex items-center justify-between">
+                <span>Age</span>
+                <span className="font-mono text-primary">{age} {ageUnit === "months" ? "mo" : "yr"}</span>
               </Label>
-              <div className="flex gap-2 mt-1">
-                <Input
-                  id="age"
-                  type="number"
-                  min="0"
-                  max="999"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                  placeholder="Age"
-                  className="flex-1"
+              <div className="mt-3 space-y-2">
+                <Slider
+                  value={[age]}
+                  onValueChange={(v) => setAge(v[0])}
+                  min={0}
+                  max={ageUnit === "months" ? 24 : 18}
+                  step={1}
                 />
-                <div className="flex rounded-md border border-input overflow-hidden">
+                <div className="flex rounded-md border border-input overflow-hidden w-fit">
                   <button
                     type="button"
-                    onClick={() => setAgeUnit("months")}
-                    className={`px-3 py-2 text-sm font-medium transition-colors ${
+                    onClick={() => { setAgeUnit("months"); setAge(0); }}
+                    className={`px-3 py-1.5 text-xs font-medium transition-colors ${
                       ageUnit === "months"
                         ? "bg-primary text-primary-foreground"
                         : "bg-card text-muted-foreground hover:bg-muted"
@@ -113,8 +112,8 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
                   </button>
                   <button
                     type="button"
-                    onClick={() => setAgeUnit("years")}
-                    className={`px-3 py-2 text-sm font-medium transition-colors ${
+                    onClick={() => { setAgeUnit("years"); setAge(0); }}
+                    className={`px-3 py-1.5 text-xs font-medium transition-colors ${
                       ageUnit === "years"
                         ? "bg-primary text-primary-foreground"
                         : "bg-card text-muted-foreground hover:bg-muted"
@@ -145,19 +144,17 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
             </div>
 
             <div>
-              <Label htmlFor="height" className="text-sm font-semibold text-foreground flex items-center gap-1">
-                <Ruler className="h-3.5 w-3.5" /> Height (cm)
+              <Label className="text-sm font-semibold text-foreground flex items-center justify-between">
+                <span className="flex items-center gap-1"><Ruler className="h-3.5 w-3.5" /> Height (cm)</span>
+                <span className="font-mono text-primary">{height} cm</span>
               </Label>
-              <Input
-                id="height"
-                type="number"
-                min="1"
-                max="250"
-                step="0.1"
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
-                placeholder="cm"
-                className="mt-1"
+              <Slider
+                value={[height]}
+                onValueChange={(v) => setHeight(v[0])}
+                min={0}
+                max={200}
+                step={1}
+                className="mt-3"
               />
             </div>
 
