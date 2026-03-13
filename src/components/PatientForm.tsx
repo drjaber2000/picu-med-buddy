@@ -14,6 +14,7 @@ export interface PatientData {
   weight: number;
   height: number;
   bmi: number | null;
+  bsa: number | null;
 }
 
 interface PatientFormProps {
