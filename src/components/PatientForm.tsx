@@ -99,7 +99,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
                   onValueChange={(v) => setAge(v[0])}
                   min={0}
                   max={ageUnit === "months" ? 24 : 18}
-                  step={1}
+                  step={0.1}
                 />
                 <div className="flex rounded-md border border-input overflow-hidden w-fit">
                   <button
