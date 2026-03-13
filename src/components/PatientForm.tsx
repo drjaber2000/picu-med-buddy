@@ -26,10 +26,10 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
   const [mrn, setMrn] = useState("");
   const [age, setAge] = useState(0);
   const [ageUnit, setAgeUnit] = useState<"months" | "years">("years");
-  const [weight, setWeight] = useState("");
+  const [weight, setWeight] = useState(0);
   const [height, setHeight] = useState(0);
 
-  const weightNum = parseFloat(weight) || 0;
+  const weightNum = weight;
   const heightNum = height;
   const heightM = heightNum / 100;
   const bmi = weightNum > 0 && heightM > 0 ? weightNum / (heightM * heightM) : null;
@@ -37,7 +37,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !weight || weightNum <= 0) return;
+    if (!name.trim() || weightNum <= 0) return;
     onSubmit({
       name: name.trim(),
       mrn: mrn.trim(),
@@ -91,7 +91,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
             <div>
               <Label className="text-sm font-semibold text-foreground flex items-center justify-between">
                 <span>Age</span>
-                <span className="font-mono text-primary">{age} {ageUnit === "months" ? "mo" : "yr"}</span>
+                <span className="font-mono text-primary">{age.toFixed(1)} {ageUnit === "months" ? "mo" : "yr"}</span>
               </Label>
               <div className="mt-3 space-y-2">
                 <Slider
@@ -99,7 +99,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
                   onValueChange={(v) => setAge(v[0])}
                   min={0}
                   max={ageUnit === "months" ? 24 : 18}
-                  step={1}
+                  step={0.1}
                 />
                 <div className="flex rounded-md border border-input overflow-hidden w-fit">
                   <button
@@ -129,20 +129,17 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
             </div>
 
             <div>
-              <Label htmlFor="weight" className="text-sm font-semibold text-foreground flex items-center gap-1">
-                <Weight className="h-3.5 w-3.5" /> Weight (kg)
+              <Label className="text-sm font-semibold text-foreground flex items-center justify-between">
+                <span className="flex items-center gap-1"><Weight className="h-3.5 w-3.5" /> Weight (kg)</span>
+                <span className="font-mono text-primary">{weight.toFixed(1)} kg</span>
               </Label>
-              <Input
-                id="weight"
-                type="number"
-                min="0.1"
-                max="300"
-                step="0.1"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-                placeholder="kg"
-                className="mt-1"
-                required
+              <Slider
+                value={[weight]}
+                onValueChange={(v) => setWeight(v[0])}
+                min={0}
+                max={150}
+                step={0.1}
+                className="mt-3"
               />
             </div>
 
