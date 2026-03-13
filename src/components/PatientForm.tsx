@@ -26,10 +26,10 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
   const [mrn, setMrn] = useState("");
   const [age, setAge] = useState(0);
   const [ageUnit, setAgeUnit] = useState<"months" | "years">("years");
-  const [weight, setWeight] = useState("");
+  const [weight, setWeight] = useState(0);
   const [height, setHeight] = useState(0);
 
-  const weightNum = parseFloat(weight) || 0;
+  const weightNum = weight;
   const heightNum = height;
   const heightM = heightNum / 100;
   const bmi = weightNum > 0 && heightM > 0 ? weightNum / (heightM * heightM) : null;
@@ -37,7 +37,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !weight || weightNum <= 0) return;
+    if (!name.trim() || weightNum <= 0) return;
     onSubmit({
       name: name.trim(),
       mrn: mrn.trim(),
