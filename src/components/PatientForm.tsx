@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
-import { User, Weight, Ruler, Activity } from "lucide-react";
+import { User, Weight, Ruler, Activity, Circle } from "lucide-react";
 
 export interface PatientData {
   name: string;
@@ -14,6 +14,7 @@ export interface PatientData {
   weight: number;
   height: number;
   bmi: number | null;
+  bsa: number | null;
 }
 
 interface PatientFormProps {
@@ -32,6 +33,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
   const heightNum = height;
   const heightM = heightNum / 100;
   const bmi = weightNum > 0 && heightM > 0 ? weightNum / (heightM * heightM) : null;
+  const bsa = weightNum > 0 && heightNum > 0 ? Math.sqrt((heightNum * weightNum) / 3600) : null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,6 +46,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
       weight: weightNum,
       height: heightNum,
       bmi,
+      bsa,
     });
   };
 
@@ -164,6 +167,15 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
               </Label>
               <div className="mt-1 h-10 flex items-center px-3 rounded-md bg-muted text-sm font-mono">
                 {bmi ? bmi.toFixed(1) : "—"}
+              </div>
+            </div>
+
+            <div>
+              <Label className="text-sm font-semibold text-foreground flex items-center gap-1">
+                <Circle className="h-3.5 w-3.5" /> BSA (m²)
+              </Label>
+              <div className="mt-1 h-10 flex items-center px-3 rounded-md bg-muted text-sm font-mono">
+                {bsa ? bsa.toFixed(3) : "—"}
               </div>
             </div>
           </div>
