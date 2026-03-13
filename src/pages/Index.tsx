@@ -82,6 +82,7 @@ const Index = () => {
                 <Badge variant="outline" className="font-mono">
                   BSA {patient.bsa.toFixed(3)} m²
                 </Badge>
+              )}
               <Button
                 variant="ghost"
                 size="sm"
