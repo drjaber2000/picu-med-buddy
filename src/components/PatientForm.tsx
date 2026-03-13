@@ -91,7 +91,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
             <div>
               <Label className="text-sm font-semibold text-foreground flex items-center justify-between">
                 <span>Age</span>
-                <span className="font-mono text-primary">{age} {ageUnit === "months" ? "mo" : "yr"}</span>
+                <span className="font-mono text-primary">{age.toFixed(1)} {ageUnit === "months" ? "mo" : "yr"}</span>
               </Label>
               <div className="mt-3 space-y-2">
                 <Slider
