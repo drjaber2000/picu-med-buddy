@@ -33,6 +33,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
   const heightNum = height;
   const heightM = heightNum / 100;
   const bmi = weightNum > 0 && heightM > 0 ? weightNum / (heightM * heightM) : null;
+  const bsa = weightNum > 0 && heightNum > 0 ? Math.sqrt((heightNum * weightNum) / 3600) : null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,6 +46,7 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
       weight: weightNum,
       height: heightNum,
       bmi,
+      bsa,
     });
   };
 
