@@ -78,6 +78,10 @@ const Index = () => {
                   BMI {patient.bmi.toFixed(1)}
                 </Badge>
               )}
+              {patient.bsa && (
+                <Badge variant="outline" className="font-mono">
+                  BSA {patient.bsa.toFixed(3)} m²
+                </Badge>
               <Button
                 variant="ghost"
                 size="sm"
