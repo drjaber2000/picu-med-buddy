@@ -169,6 +169,15 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
                 {bmi ? bmi.toFixed(1) : "—"}
               </div>
             </div>
+
+            <div>
+              <Label className="text-sm font-semibold text-foreground flex items-center gap-1">
+                <Circle className="h-3.5 w-3.5" /> BSA (m²)
+              </Label>
+              <div className="mt-1 h-10 flex items-center px-3 rounded-md bg-muted text-sm font-mono">
+                {bsa ? bsa.toFixed(3) : "—"}
+              </div>
+            </div>
           </div>
 
           <Button type="submit" className="w-full" size="lg">
