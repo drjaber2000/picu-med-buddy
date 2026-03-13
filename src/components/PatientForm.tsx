@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
-import { User, Weight, Ruler, Activity } from "lucide-react";
+import { User, Weight, Ruler, Activity, Circle } from "lucide-react";
 
 export interface PatientData {
   name: string;
