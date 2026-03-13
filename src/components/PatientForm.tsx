@@ -129,20 +129,17 @@ const PatientForm = ({ onSubmit }: PatientFormProps) => {
             </div>
 
             <div>
-              <Label htmlFor="weight" className="text-sm font-semibold text-foreground flex items-center gap-1">
-                <Weight className="h-3.5 w-3.5" /> Weight (kg)
+              <Label className="text-sm font-semibold text-foreground flex items-center justify-between">
+                <span className="flex items-center gap-1"><Weight className="h-3.5 w-3.5" /> Weight (kg)</span>
+                <span className="font-mono text-primary">{weight.toFixed(1)} kg</span>
               </Label>
-              <Input
-                id="weight"
-                type="number"
-                min="0.1"
-                max="300"
-                step="0.1"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-                placeholder="kg"
-                className="mt-1"
-                required
+              <Slider
+                value={[weight]}
+                onValueChange={(v) => setWeight(v[0])}
+                min={0}
+                max={150}
+                step={0.1}
+                className="mt-3"
               />
             </div>
 
